@@ -93,3 +93,9 @@ Adopting this strategy is useful, because we don't need to ask the item to physi
 - Implement Drop event on Item, to send Swap request to `InventoryPreferences`.
 - Implement Drop event on Item, so Items moved outside the window can request removal to `InventoryPreferences`.
 - Implement Double Click event on Item, so Items clicked can activate an effect defined on the Item Script. (defined per script)
+
+## Diagram
+
+A Diagram explaining this system could be described like this:
+
+![image](https://user-images.githubusercontent.com/68507/105080051-0bc10180-5a6f-11eb-9ce6-a2fc8de70e49.png)
