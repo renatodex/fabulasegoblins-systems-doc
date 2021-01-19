@@ -53,7 +53,7 @@ A few features we want:
   - Add one Item to a Slot
   - Stack Quantity of Items in the Slots
   - Remove one item in a given Slot
-  - 
+  - Make it possible to limit the number of Itens in the Inventory, by setting a `maxSlots` property.
 
 This Scriptable object will have methods to control the Bag, 
 
@@ -71,3 +71,25 @@ In this first version of the UI, we are not worried in implementing the Inventor
 
 Here we want to integrate our work in the Part 1 (which a Code-Only), and our work in Part 2 (which is Visual-only)
 This approach make it easy to reason about each part, and create the separation we need to build a smart component.
+
+Here we want to reflect the Data inside the InventoryPreferences into the Slots.
+So things we would want to do:
+
+- Build dynamically the slots based on the number of `maxSlots` configured by the InventoryPreferences.
+- Assign each visual slot dynamically to one virtual slot contained in the array of InventoryPreferences.
+- Display the Item Icons and quantity of each slot.
+
+## Part 4 - Implementing Events
+
+Here we want trigger events in the InventoryPreferences.
+Most of updates can be handle by `update` event, since all places are accessing the contents of `InventoryPreferences`.
+However, a few actions like Drag n Drop requires extra work to setup.
+For this, each item object must have a Drag and a Drop event that can be trigger when Player try to swap itens in the inventory, or move them to empty slots.
+This could be possible by simply sending an update the InventoryPreferences, updating the Slots contents. (it could even be a helper in the InventoryPreferences).
+Adopting this strategy is useful, because we don't need to ask the item to physically change the items, we could just ask InventoryPreferences to do the change, and once it's done, the `update` method on the Inventory component would automatically reflect the changes into the window. 
+
+- Implement Drag event on Item
+- Create a Ghost Item icon instead of moving the actual item. (search: ghost drag and drop)
+- Implement Drop event on Item, to send Swap request to `InventoryPreferences`.
+- Implement Drop event on Item, so Items moved outside the window can request removal to `InventoryPreferences`.
+- Implement Double Click event on Item, so Items clicked can activate an effect defined on the Item Script. (defined per script)
