@@ -40,7 +40,7 @@ A few features would include:
 Since the Inventory system have a lot of complexity, it would be interesting to break down complexity by creating simplifying versions of the Component, and then escalate accordingly.
 I will describe here some levels of iteractions that we can have with this component.
 
-## Part 1 - Proof of Concept, Data Properties of an Inventory
+## Part 1 - Inventory Data -> InventoryPreferences
 
 In this part 1, we are not worried with a Physical and Visual Inventory.
 All we want is to be able to control the Bag via script and to have a single InventoryPreferences object that will act as the "Global variable" of the Inventory.
